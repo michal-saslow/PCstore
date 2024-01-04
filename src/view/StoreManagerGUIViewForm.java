@@ -9,7 +9,6 @@ import java.awt.event.*;
 public class StoreManagerGUIViewForm {
 
 
-
     private JButton addC;
     private JButton Order;
     private JButton seeOrder;
@@ -20,13 +19,13 @@ public class StoreManagerGUIViewForm {
         addC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new  AddNewCustomerForm().setVisible(true);
+                new AddNewCustomerForm().setVisible(true);
             }
         });
         product.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame=new JFrame();
+                JFrame frame = new JFrame();
                 frame.setContentPane(new ManageCatalogForm().panel2);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -36,7 +35,7 @@ public class StoreManagerGUIViewForm {
         Order.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame=new JFrame();
+                JFrame frame = new JFrame();
                 frame.setContentPane(new PlaceOrderForm().panel4);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -46,7 +45,7 @@ public class StoreManagerGUIViewForm {
         seeOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame=new JFrame();
+                JFrame frame = new JFrame();
                 frame.setContentPane(new ViewPurchasesForm().panel5);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -62,12 +61,11 @@ public class StoreManagerGUIViewForm {
         frame.setContentPane(new StoreManagerGUIViewForm().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
-            //בעת כניסה מטעין נתונים
             @Override
             public void windowOpened(WindowEvent e) {
-                    Backend_DAO_List.get().loadDataFromFile();
+                Backend_DAO_List.get().loadDataFromFile();
             }
-            // בעת יציאה נשמור נתונים
+
             @Override
             public void windowClosing(WindowEvent e) {
                 Backend_DAO_List.get().savaDataToFile();

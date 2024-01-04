@@ -19,22 +19,18 @@ public class ViewPurchasesForm {
 
     public ViewPurchasesForm() {
         try {
-            //מאתחל את רשימת הלקוחות
             CustomerModel = new DefaultComboBoxModel(Backend_DAO_List.get().getAllCustomers().values().toArray());
             customer.setModel(CustomerModel);
             customer.setSelectedIndex(0);
-            //מציג את ההזמנות ללקוח מסוים
-            AllProductsListModel=new DefaultListModel();
+            AllProductsListModel = new DefaultListModel();
             list1.setModel(AllProductsListModel);
-            //מכניס בפונקציה כל פעם מחדש את כל הרשימה
             RefreshProductList();
             System.out.println(list1.getModel());
-            //סוכם את הסכום הכללי
             Product[] products = new Product[AllProductsListModel.size()];
             AllProductsListModel.copyInto(products);
             Float total = Backend_DAO_List.get().CalcProductsTotalCost(products);
             sum.setText(total.toString());
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Placing order", "Error",
                     JOptionPane.ERROR_MESSAGE);
             ex.getMessage();
@@ -46,11 +42,11 @@ public class ViewPurchasesForm {
             }
         });
     }
-    //מכניס נתונים לרשימה
+
     public void RefreshProductList() {
         try {
             AllProductsListModel.clear();
-            Customer cus= (Customer) customer.getSelectedItem();
+            Customer cus = (Customer) customer.getSelectedItem();
             for (Product p : Backend_DAO_List.get().getCustomersOrders(cus)) {
                 AllProductsListModel.addElement(p);
             }

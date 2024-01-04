@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Customer implements Serializable {
     private long id;
     private String name;
-    private  String address;
+    private String address;
 
     public Customer() {
     }

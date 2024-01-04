@@ -8,7 +8,9 @@ public abstract class Product implements Serializable {
     private String description;
     private float pricePerUnit;
 
-    public enum ProductType{HARDWARE, SOFTWARE};
+    public enum ProductType {HARDWARE, SOFTWARE};
+
+
     public Product() {
     }
 
@@ -60,5 +62,6 @@ public abstract class Product implements Serializable {
                 ", price=" + getPrice() +
                 '}';
     }
+
     public abstract float getPrice();
 }

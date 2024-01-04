@@ -21,7 +21,8 @@ public class AddNewProductForm {
     private JLabel description;
     private JLabel name;
     private JLabel lblOther;
-  private ManageCatalogForm manageCatalogForm;
+    private ManageCatalogForm manageCatalogForm;
+
     public AddNewProductForm(ManageCatalogForm catalogForm) {
         manageCatalogForm = catalogForm;
         DefaultComboBoxModel model = new DefaultComboBoxModel(Product.ProductType.values());
@@ -40,12 +41,12 @@ public class AddNewProductForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Long id=12545L;
+                    Long id = 12545L;
                     Product newProduct;
-                    String name=NAME.getText();
-                    String d=Description.getText();
-                    float price= Float.parseFloat(PricePeriod.getText());
-                    int ibi=Integer.parseInt(lblOtherTxt.getText());
+                    String name = NAME.getText();
+                    String d = Description.getText();
+                    float price = Float.parseFloat(PricePeriod.getText());
+                    int ibi = Integer.parseInt(lblOtherTxt.getText());
                     // בדיקת תקינות עבור שם
                     if (name.trim().isEmpty()) {
                         throw new IllegalArgumentException("Name cannot be empty. Please enter a valid name.");
@@ -55,25 +56,25 @@ public class AddNewProductForm {
                         throw new IllegalArgumentException("Description cannot be empty. Please enter a valid Description.");
                     }
                     // בדיקת תקינות עבור מחיר
-                    if (price<0) {
+                    if (price < 0) {
                         throw new IllegalArgumentException("price cannot be ziro. Please enter a valid price.");
                     }
                     // בדיקת תקינות עבור Ibi
-                    if (ibi<0) {
+                    if (ibi < 0) {
                         throw new IllegalArgumentException("ibi cannot be zero. Please enter a valid ibi.");
                     }
 
                     if (isInHardwareMode()) {
-                        newProduct = new HardwareProduct(id,name,d,price,ibi);
+                        newProduct = new HardwareProduct(id, name, d, price, ibi);
                     } else {
-                        newProduct= new SoftwareProduct(id,name,d,price,ibi);
+                        newProduct = new SoftwareProduct(id, name, d, price, ibi);
                     }
                     Backend_DAO_List.get().AddProduct((Product) newProduct);
                     System.out.println(Backend_DAO_List.get().getAllProducts());
 
                     manageCatalogForm.RefreshProductList();
-                        JOptionPane.showMessageDialog(null, "Product added successfully");
-                    } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Product added successfully");
+                } catch (Exception ex) {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Error adding prudoct: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     throw new RuntimeException(ex);

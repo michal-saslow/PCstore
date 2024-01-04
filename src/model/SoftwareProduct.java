@@ -17,7 +17,8 @@ public class SoftwareProduct extends Product implements Serializable {
         super(id, name, description, pricePerUnit);
         this.numberOfUsers = numberOfUsers;
     }
-    public float getPrice(){
-        return this.numberOfUsers+super.getPricePerUnit();
+
+    public float getPrice() {
+        return this.numberOfUsers + super.getPricePerUnit();
     }
 }
