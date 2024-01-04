@@ -47,19 +47,15 @@ public class AddNewProductForm {
                     String d = Description.getText();
                     float price = Float.parseFloat(PricePeriod.getText());
                     int ibi = Integer.parseInt(lblOtherTxt.getText());
-                    // בדיקת תקינות עבור שם
                     if (name.trim().isEmpty()) {
                         throw new IllegalArgumentException("Name cannot be empty. Please enter a valid name.");
                     }
-                    // בדיקת תקינות עבור תאור
                     if (d.trim().isEmpty()) {
                         throw new IllegalArgumentException("Description cannot be empty. Please enter a valid Description.");
                     }
-                    // בדיקת תקינות עבור מחיר
                     if (price < 0) {
                         throw new IllegalArgumentException("price cannot be ziro. Please enter a valid price.");
                     }
-                    // בדיקת תקינות עבור Ibi
                     if (ibi < 0) {
                         throw new IllegalArgumentException("ibi cannot be zero. Please enter a valid ibi.");
                     }
